@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Sneha Panda">
+  <meta name="theme-color" content="#fdeef4">
+  <title>Contact | Sneha Panda</title>
+  <style>
+    :root {
+      --bg: linear-gradient(135deg, #fff7f8 0%, #fce7ee 45%, #eaf8f6 100%);
+      --dots: rgba(255,255,255,0.45);
+      --card: rgba(255, 255, 255, 0.86);
+      --text: #2f2a28;
+      --muted: #7a6f6a;
+      --accent: #2a9d8f;
+      --accent2: #d9a5b3;
+      --accent3: #b3ece6;
+      --border: rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark {
+      --bg: linear-gradient(135deg, #1d1b2b 0%, #2f2239 50%, #17353b 100%);
+      --card: rgba(30, 30, 42, 0.9);
+      --dots: rgba(255,255,255,0.06);
+      --text: #f8f4ef;
+      --muted: #c8b7b0;
+      --accent: #8fd8d2;
+      --accent2: #f4b6c9;
+      --accent3: #7dc7c0;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      margin: 0;
+      padding: 0;
+      background-image: radial-gradient(circle, var(--dots) 6px, transparent 7px), var(--bg);
+      background-size: 36px 36px, auto;
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .page-shell {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--accent2) 0%, var(--accent3) 100%);
+      color: var(--text);
+      padding: 28px 24px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .top-nav a, .theme-toggle {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .theme-toggle {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 2.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 20px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    input, textarea {
+      font: inherit;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.7);
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .button {
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent3));
+      color: var(--text);
+      border-radius: 999px;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .status {
+      min-height: 1.4em;
+      margin-top: 4px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      .top-nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="top-nav">
+        <div>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark Mode</button>
+      </nav>
+      <h1>Contact Me</h1>
+      <p>Leave a message and I’ll get it in my inbox at sneha.panda.ny@gmail.com.</p>
+    </header>
+
+    <section class="card">
+      <form id="contactForm">
+        <label>
+          Name
+          <input id="name" name="name" type="text" placeholder="Your name" required>
+        </label>
+        <label>
+          Email
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </label>
+        <label>
+          Message
+          <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+        </label>
+        <button class="button" type="submit">Send Message</button>
+        <p id="formStatus" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer>
+      <p>© 2026 Sneha Panda. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const toggleButton = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+      toggleButton.textContent = '☀️ Light Mode';
+    }
+
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      toggleButton.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const subject = encodeURIComponent(`New message from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      const mailtoLink = `mailto:sneha.panda.ny@gmail.com?subject=${subject}&body=${body}`;
+
+      window.location.href = mailtoLink;
+      status.textContent = 'Opening your email app...';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
